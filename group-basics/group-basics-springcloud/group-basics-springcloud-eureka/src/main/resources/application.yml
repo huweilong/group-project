@@ -1,0 +1,13 @@
+### 服务端口号
+server:
+  port: 8100
+### eureka 基本信息配置
+eureka:
+  instance:
+    ### eureka注册地址
+    hostname: 127.0.0.1
+  client:
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka
+    register-with-eureka: false
+    fetch-registry: false

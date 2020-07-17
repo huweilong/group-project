@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- 父项目配置区 -->
+    <parent>
+        <artifactId>group-basics-springcloud</artifactId>
+        <groupId>com.huweilong</groupId>
+        <version>1.0.0.RELEASE</version>
+    </parent>
+
+    <!-- 本项目配置区 -->
+    <artifactId>group-basics-springcloud-eureka</artifactId>
+    <name>分布式基础设施 - Spring Cloud组件 - 分布式注册中心</name>
+    <description>分布式注册中心：eureka</description>
+
+    <!-- 项目依赖区 -->
+    <dependencies>
+        <!--SpringCloud eureka-server -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
+        </dependency>
+    </dependencies>
+</project>
