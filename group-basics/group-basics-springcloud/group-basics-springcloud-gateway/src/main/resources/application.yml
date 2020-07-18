@@ -1,0 +1,33 @@
+### 服务端口号
+server:
+  port: 80
+
+### eureka 基本信息配置
+eureka:
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:8100/eureka
+
+### Spring 配置
+spring:
+  application:
+    name:  group-basics-springcloud-gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          ### 开启通过服务中心的自动根据 serviceId 创建路由的功能
+          enabled: true
+          ### 开启小写验证，默认feign根据服务名查找都是用的全大写
+          lower-case-service-id: true
+      routes:
+        - id: 分布式服务 - 分布式测试服务
+          uri: lb://group-service-test
+          predicates:
+            - Path=/group-service-test/**
+          filters:
+            - SwaggerHeaderFilter
+            - StripPrefix=1

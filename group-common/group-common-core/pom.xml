@@ -6,21 +6,13 @@
 
     <!-- 父项目配置区 -->
     <parent>
-        <artifactId>group-basics</artifactId>
+        <artifactId>group-common</artifactId>
         <groupId>com.huweilong</groupId>
         <version>1.0.0.RELEASE</version>
     </parent>
 
-    <!-- 子项目配置区 -->
-    <modules>
-        <module>group-basics-springcloud-eureka</module>
-        <module>group-basics-springcloud-gateway</module>
-    </modules>
-
     <!-- 本项目配置区 -->
-    <artifactId>group-basics-springcloud</artifactId>
-    <packaging>pom</packaging>
-    <name>分布式基础设施 - Spring Cloud组件</name>
-    <description>包含：分布式注册中心</description>
+    <artifactId>group-common-core</artifactId>
+    <name>分布式工具 - 分布式核心工具</name>
 
 </project>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- 父项目配置区 -->
+    <parent>
+        <artifactId>group-basics-springcloud</artifactId>
+        <groupId>com.huweilong</groupId>
+        <version>1.0.0.RELEASE</version>
+    </parent>
+
+    <!-- 本项目配置区 -->
+    <artifactId>group-basics-springcloud-gateway</artifactId>
+    <name>分布式基础设施 - Spring Cloud组件 - 网关中心</name>
+    <description>网关中心：gateway</description>
+
+    <!-- 项目依赖区 -->
+    <dependencies>
+        <!-- gateway -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-gateway</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.xiaoymin</groupId>
+            <artifactId>knife4j-spring-boot-starter</artifactId>
+        </dependency>
+    </dependencies>
+</project>

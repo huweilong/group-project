@@ -15,6 +15,8 @@
     <!-- 子项目配置区 -->
     <modules>
         <module>group-basics</module>
+        <module>group-service</module>
+        <module>group-common</module>
     </modules>
 
     <!-- 本项目配置区 -->
@@ -35,15 +37,11 @@
         <commons-net.commons-net.version>3.6</commons-net.commons-net.version>
         <com.alibaba.fastjson.version>1.2.72</com.alibaba.fastjson.version>
         <dom4j.dom4j.version>1.6.1</dom4j.dom4j.version>
+        <knife4j.version>2.0.4</knife4j.version>
     </properties>
 
     <!-- 项目依赖区 -->
     <dependencies>
-        <!-- SpringBoot-整合Web组件 -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -91,6 +89,17 @@
                 <version>${spring-cloud.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>com.github.xiaoymin</groupId>
+                <artifactId>knife4j-micro-spring-boot-starter</artifactId>
+                <version>${knife4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.xiaoymin</groupId>
+                <artifactId>knife4j-spring-boot-starter</artifactId>
+                <version>${knife4j.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

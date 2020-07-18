@@ -1,0 +1,14 @@
+### 服务端口号
+server:
+  port: 8300
+
+### eureka 基本信息配置
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:8100/eureka
+
+### Spring 配置
+spring:
+  application:
+    name:  group-service-test

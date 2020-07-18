@@ -6,21 +6,21 @@
 
     <!-- 父项目配置区 -->
     <parent>
-        <artifactId>group-basics</artifactId>
+        <artifactId>group-service-api</artifactId>
         <groupId>com.huweilong</groupId>
         <version>1.0.0.RELEASE</version>
     </parent>
 
-    <!-- 子项目配置区 -->
-    <modules>
-        <module>group-basics-springcloud-eureka</module>
-        <module>group-basics-springcloud-gateway</module>
-    </modules>
-
     <!-- 本项目配置区 -->
-    <artifactId>group-basics-springcloud</artifactId>
-    <packaging>pom</packaging>
-    <name>分布式基础设施 - Spring Cloud组件</name>
-    <description>包含：分布式注册中心</description>
+    <artifactId>group-service-api-test</artifactId>
+    <name>分布式服务 - 分布式服务接口 - 分布式测试服务</name>
 
+    <!-- 依赖管理区 -->
+    <dependencies>
+        <dependency>
+            <groupId>com.huweilong</groupId>
+            <artifactId>group-service-dto-test</artifactId>
+            <version>${group-project.version}</version>
+        </dependency>
+    </dependencies>
 </project>
