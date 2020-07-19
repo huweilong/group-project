@@ -1,5 +1,6 @@
 package com.huweilong.group.service.test.config;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
@@ -18,24 +19,45 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @Import(BeanValidatorPluginsConfiguration.class)
 public class SwaggerConfig {
 
-    @Bean(value = "testApi")
-    @Order(value = 1)
+    @Value("${swagger.base-package}")
+    private String basePackage;
+
+    @Value("${swagger.title}")
+    private String title;
+
+    @Value("${swagger.description}")
+    private String description;
+
+    @Value("${swagger.version}")
+    private String version;
+
+    @Value("${swagger.terms-of-service-url}")
+    private String termsOfServiceUrl;
+
+    @Value("${swagger.contact.name}")
+    private String contactName;
+
+    @Value("${swagger.contact.email}")
+    private String contactEmail;
+
+    @Bean
+    @Order
     public Docket groupRestApi() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(groupApiInfo())
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.huweilong.group.service.test"))
+                .apis(RequestHandlerSelectors.basePackage(basePackage))
                 .paths(PathSelectors.any())
                 .build();
     }
 
     private ApiInfo groupApiInfo(){
         return new ApiInfoBuilder()
-                .title("分布式服务 - 分布式测试服务")
-                .description("分布式服务 - 分布式测试服务")
-                .termsOfServiceUrl("http://www.huweilong.com/")
-                .contact("Alex_2713@126.com")
-                .version("1.0.0")
+                .title(title)
+                .description(description)
+                .termsOfServiceUrl(termsOfServiceUrl)
+                .contact(contactEmail)
+                .version(version)
                 .build();
     }
 }

@@ -12,3 +12,14 @@ eureka:
 spring:
   application:
     name:  group-service-test
+
+####swagger相关配置
+swagger:
+  base-package: com.huweilong.group.service.test.impl
+  title: 分布式服务 - 分布式测试服务
+  description: 分布式服务 - 分布式测试服务
+  version: 1.0.0
+  terms-of-service-url: http://www.huweilong.com/
+  contact:
+    name: Alex
+    email: Alex_2713@126.com
