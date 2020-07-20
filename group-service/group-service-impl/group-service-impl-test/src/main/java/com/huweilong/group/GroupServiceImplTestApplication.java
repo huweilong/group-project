@@ -12,7 +12,6 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 @EnableEurekaClient
 @EnableFeignClients
 @SpringBootApplication
-@MapperScan(basePackages = {"com.huweilong.group.service.test.mapper", "com.huweilong.group.service.test.dao"})
 public class GroupServiceImplTestApplication {
     public static void main(String[] args) {
         // Spring Boot快速启动程序

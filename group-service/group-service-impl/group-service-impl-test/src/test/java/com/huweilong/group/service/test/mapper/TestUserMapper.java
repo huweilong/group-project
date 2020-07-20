@@ -1,7 +1,7 @@
 package com.huweilong.group.service.test.mapper;
 
 import com.huweilong.group.service.test.entity.UserEntity;
-import org.junit.Assert;
+import com.huweilong.group.service.test.entity.em.UserSexEnum;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +21,32 @@ public class TestUserMapper {
     public void testSelect() {
         System.out.println(("----- selectAll method test ------"));
         List<UserEntity> userList = userMapper.selectList(null);
-        Assert.assertEquals(5, userList.size());
         userList.forEach(System.out::println);
+    }
+
+    @Test
+    public void testInsert() {
+        UserEntity user = new UserEntity();
+        user.setName("test");
+        user.setType((byte) 1);
+        user.setSex(UserSexEnum.MAN1);
+        user.setEmail("Alex_2713@126.com");
+        userMapper.insert(user);
+    }
+
+    @Test
+    public void testUpdate() {
+        List<UserEntity> userList = userMapper.selectList(null);
+        userList.forEach(item -> {
+            userMapper.updateById(item);
+        });
+    }
+
+    @Test
+    public void testDelete() {
+        List<UserEntity> userList = userMapper.selectList(null);
+        userList.forEach(item -> {
+            userMapper.deleteById(item.getId());
+        });
     }
 }
