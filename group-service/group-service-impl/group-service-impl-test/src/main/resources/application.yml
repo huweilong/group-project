@@ -12,6 +12,55 @@ eureka:
 spring:
   application:
     name:  group-service-test
+  datasource:
+    ### 数据库连接驱动
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    ### 数据库连接地址
+    url: jdbc:mysql://10.123.199.21:3306/test?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+    ### 数据库连接用户名
+    username: root
+    ### 数据库连接密码
+    password: Hu371329
+    druid:
+      ### 初始化连接数
+      initial-size: 10
+      ### 最大活跃连接数
+      max-active: 100
+      ### 最小空闲值.当空闲的连接数少于阀值时，连接池就会预申请去一些连接，以免洪峰来时来不及申请
+      min-idle: 10
+      ### 最大等待值
+      max-wait: 60000
+      ### 打开PSCache，并且指定每个连接上PSCache的大小
+      pool-prepared-statements: true
+      max-pool-prepared-statement-per-connection-size: 20
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 30000
+      validation-query: SELECT 1 FROM DUAL
+      ### 建议配置为true，不影响性能，并且保证安全性。申请连接的时候检测，如果空闲时间大于timeBetweenEvictionRunsMillis，执行validationQuery检测连接是否有效。
+      test-while-idle: true
+      ### 申请连接时执行validationQuery检测连接是否有效，做了这个配置会降低性能。
+      test-on-borrow: false
+      ### 归还连接时执行validationQuery检测连接是否有效，做了这个配置会降低性能。
+      test-on-return: false
+      stat-view-servlet:
+        ### 展示Druid的统计信息
+        enabled: true
+        reset-enable: true
+        url-pattern: /druid/*
+        login-username: HuWeilong
+        login-password: Hu371329
+      filter:
+        stat:
+          ### slowSqlMillis用来配置SQL慢的标准，执行时间超过slowSqlMillis的就是慢。
+          log-slow-sql: true
+          ### slowSqlMillis的缺省值为3000，也就是3秒
+          slow-sql-millis: 1000
+          ### SQL合并配置
+          merge-sql: true
+        wall:
+          config:
+            ### 允许执行多条SQL
+            multi-statement-allow: true
 
 ####swagger相关配置
 swagger:

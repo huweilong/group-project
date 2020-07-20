@@ -38,6 +38,9 @@
         <com.alibaba.fastjson.version>1.2.72</com.alibaba.fastjson.version>
         <dom4j.dom4j.version>1.6.1</dom4j.dom4j.version>
         <knife4j.version>2.0.4</knife4j.version>
+        <mybatis-plus.version>3.3.2</mybatis-plus.version>
+        <com.alibaba.druid-spring-boot-starter.version>1.1.23</com.alibaba.druid-spring-boot-starter.version>
+        <mysql.mysql-connector-java.version>8.0.21</mysql.mysql-connector-java.version>
     </properties>
 
     <!-- 项目依赖区 -->
@@ -91,6 +94,7 @@
                 <scope>import</scope>
             </dependency>
 
+            <!-- 接口文档 -->
             <dependency>
                 <groupId>com.github.xiaoymin</groupId>
                 <artifactId>knife4j-micro-spring-boot-starter</artifactId>
@@ -100,6 +104,27 @@
                 <groupId>com.github.xiaoymin</groupId>
                 <artifactId>knife4j-spring-boot-starter</artifactId>
                 <version>${knife4j.version}</version>
+            </dependency>
+
+            <!-- 数据库插件 -->
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>${mybatis-plus.version}</version>
+            </dependency>
+
+            <!--druid连接池-->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid-spring-boot-starter</artifactId>
+                <version>${com.alibaba.druid-spring-boot-starter.version}</version>
+            </dependency>
+
+            <!-- mysql数据库 -->
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>${mysql.mysql-connector-java.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
