@@ -1,5 +1,6 @@
 package com.huweilong.group.service.test.impl;
 
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.huweilong.group.service.dto.basics.global.Results;
 import com.huweilong.group.service.dto.test.input.TestInput;
 import com.huweilong.group.service.dto.test.output.TestOutput;
@@ -11,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 /**
@@ -18,7 +20,8 @@ import java.util.UUID;
  * @author Alex
  */
 @RestController
-public class TestServiceImpl implements TestService {
+public class TestServiceImpl extends ServiceImpl<UserMapper, UserEntity> implements TestService {
+
     @Autowired
     private UserMapper userMapper;
 
@@ -53,6 +56,8 @@ public class TestServiceImpl implements TestService {
      */
     @Override
     public Results<TestOutput> testPostApi(TestInput testInput) {
+        List<Map<String, Object>> maps = this.listMaps();
+
         TestOutput testOutput = new TestOutput();
         testOutput.setId(testInput.getId());
         testOutput.setName(testInput.getName());
