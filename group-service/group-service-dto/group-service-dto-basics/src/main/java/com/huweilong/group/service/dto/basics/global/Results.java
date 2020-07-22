@@ -63,7 +63,7 @@ public class Results<T> implements Serializable {
      * @return 返回结果
      */
     public static <T> Results<T> SUCCESS() {
-        ResultsMsg resultsMsg = ResultsMsg.SUCCESS;
+        ResultsMsg resultsMsg = ResultsMsg.OK;
         return new Results<>(resultsMsg.getState(), resultsMsg.getMessage(), null);
     }
 
@@ -74,7 +74,7 @@ public class Results<T> implements Serializable {
      * @return 返回结果
      */
     public static <T> Results<T> SUCCESS(String message) {
-        ResultsMsg resultsMsg = ResultsMsg.SUCCESS;
+        ResultsMsg resultsMsg = ResultsMsg.OK;
         return new Results<>(resultsMsg.getState(), message, null);
     }
 
@@ -85,7 +85,7 @@ public class Results<T> implements Serializable {
      * @return 返回结果
      */
     public static <T> Results<T> SUCCESS(T content) {
-        ResultsMsg resultsMsg = ResultsMsg.SUCCESS;
+        ResultsMsg resultsMsg = ResultsMsg.OK;
         return new Results<>(resultsMsg.getState(), resultsMsg.getMessage(), content);
     }
 
@@ -97,7 +97,7 @@ public class Results<T> implements Serializable {
      * @return 返回结果
      */
     public static <T> Results<T> SUCCESS(String message, T content) {
-        ResultsMsg resultsMsg = ResultsMsg.SUCCESS;
+        ResultsMsg resultsMsg = ResultsMsg.OK;
         return new Results<>(resultsMsg.getState(), message, content);
     }
 
@@ -107,7 +107,7 @@ public class Results<T> implements Serializable {
      * @return 返回结果
      */
     public static <T> Results<T> ERROR() {
-        ResultsMsg resultsMsg = ResultsMsg.ERROR;
+        ResultsMsg resultsMsg = ResultsMsg.SEVER_ERROR;
         return new Results<>(resultsMsg.getState(), resultsMsg.getMessage(), null);
     }
 
@@ -118,7 +118,7 @@ public class Results<T> implements Serializable {
      * @return 返回结果
      */
     public static <T> Results<T> ERROR(String message) {
-        ResultsMsg resultsMsg = ResultsMsg.ERROR;
+        ResultsMsg resultsMsg = ResultsMsg.SEVER_ERROR;
         return new Results<>(resultsMsg.getState(), message, null);
     }
 
@@ -129,7 +129,7 @@ public class Results<T> implements Serializable {
      * @return 返回结果
      */
     public static <T> Results<T> ERROR(T content) {
-        ResultsMsg resultsMsg = ResultsMsg.ERROR;
+        ResultsMsg resultsMsg = ResultsMsg.SEVER_ERROR;
         return new Results<>(resultsMsg.getState(), resultsMsg.getMessage(), content);
     }
 
@@ -141,7 +141,7 @@ public class Results<T> implements Serializable {
      * @return 返回结果
      */
     public static <T> Results<T> ERROR(Integer state, String message) {
-        ResultsMsg resultsMsg = ResultsMsg.ERROR;
+        ResultsMsg resultsMsg = ResultsMsg.SEVER_ERROR;
         return new Results<>(state, message, null);
     }
 
@@ -153,7 +153,7 @@ public class Results<T> implements Serializable {
      * @return 返回结果
      */
     public static <T> Results<T> ERROR(String message, T content) {
-        ResultsMsg resultsMsg = ResultsMsg.ERROR;
+        ResultsMsg resultsMsg = ResultsMsg.SEVER_ERROR;
         return new Results<>(resultsMsg.getState(), message, content);
     }
 
