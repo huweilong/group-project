@@ -19,7 +19,7 @@
     <dependencies>
         <dependency>
             <groupId>com.huweilong</groupId>
-            <artifactId>group-service-api-test</artifactId>
+            <artifactId>group-service-api-system</artifactId>
             <version>${group-project.version}</version>
         </dependency>
 
