@@ -12,8 +12,8 @@
     </parent>
 
     <!-- 本项目配置区 -->
-    <artifactId>group-service-impl-test</artifactId>
-    <name>分布式服务 - 分布式服务实现 - 分布式测试服务</name>
+    <artifactId>group-service-impl-system</artifactId>
+    <name>分布式服务 - 分布式服务实现 - 分布式系统服务</name>
 
     <!-- 依赖管理区 -->
     <dependencies>

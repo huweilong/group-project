@@ -15,4 +15,11 @@
     <artifactId>group-common-core</artifactId>
     <name>分布式工具 - 分布式核心工具</name>
 
+    <!-- 依赖管理区 -->
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-pool2</artifactId>
+        </dependency>
+    </dependencies>
 </project>

@@ -1,6 +1,6 @@
 ### 服务端口号
 server:
-  port: 80
+  port: 10080
 
 ### eureka 基本信息配置
 eureka:
@@ -28,6 +28,13 @@ spring:
           uri: lb://group-service-test
           predicates:
             - Path=/group-service-test/**
+          filters:
+            - SwaggerHeaderFilter
+            - StripPrefix=1
+        - id: 分布式服务 - 分布式系统服务
+          uri: lb://group-service-system
+          predicates:
+            - Path=/group-service-system/**
           filters:
             - SwaggerHeaderFilter
             - StripPrefix=1

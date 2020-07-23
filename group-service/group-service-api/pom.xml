@@ -14,6 +14,7 @@
     <!-- 子项目配置区 -->
     <modules>
         <module>group-service-api-test</module>
+        <module>group-service-api-system</module>
     </modules>
 
     <!-- 本项目配置区 -->

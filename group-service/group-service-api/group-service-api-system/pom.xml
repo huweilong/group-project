@@ -6,21 +6,21 @@
 
     <!-- 父项目配置区 -->
     <parent>
-        <artifactId>group-service</artifactId>
+        <artifactId>group-service-api</artifactId>
         <groupId>com.huweilong</groupId>
         <version>1.0.0.RELEASE</version>
     </parent>
 
-    <!-- 子项目配置区 -->
-    <modules>
-        <module>group-service-dto-test</module>
-        <module>group-service-dto-basics</module>
-        <module>group-service-dto-system</module>
-    </modules>
-
     <!-- 本项目配置区 -->
-    <artifactId>group-service-dto</artifactId>
-    <packaging>pom</packaging>
-    <name>分布式服务 - 分布式服务对象</name>
+    <artifactId>group-service-api-system</artifactId>
+    <name>分布式服务 - 分布式服务接口 - 分布式系统服务</name>
 
+    <!-- 依赖管理区 -->
+    <dependencies>
+        <dependency>
+            <groupId>com.huweilong</groupId>
+            <artifactId>group-service-dto-system</artifactId>
+            <version>${group-project.version}</version>
+        </dependency>
+    </dependencies>
 </project>
