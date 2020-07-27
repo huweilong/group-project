@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- 父项目配置区 -->
+    <parent>
+        <artifactId>group-project</artifactId>
+        <groupId>com.huweilong</groupId>
+        <version>1.0.0.RELEASE</version>
+    </parent>
+
+    <!-- 本项目配置区 -->
+    <artifactId>group-web</artifactId>
+    <packaging>pom</packaging>
+    <name>分布式界面</name>
+    <description>采用vue框架，存放此处的目的为了便于管理</description>
+
+</project>

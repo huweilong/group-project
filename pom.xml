@@ -17,6 +17,7 @@
         <module>group-basics</module>
         <module>group-service</module>
         <module>group-common</module>
+        <module>group-web</module>
     </modules>
 
     <!-- 本项目配置区 -->
@@ -42,6 +43,7 @@
         <com.alibaba.druid-spring-boot-starter.version>1.1.23</com.alibaba.druid-spring-boot-starter.version>
         <mysql.mysql-connector-java.version>8.0.21</mysql.mysql-connector-java.version>
         <p6spy.p6spy.version>3.9.0</p6spy.p6spy.version>
+        <com.xuxueli.xxl-sso-core.version>1.1.0</com.xuxueli.xxl-sso-core.version>
     </properties>
 
     <!-- 项目依赖区 -->
@@ -133,6 +135,13 @@
                 <groupId>p6spy</groupId>
                 <artifactId>p6spy</artifactId>
                 <version>${p6spy.p6spy.version}</version>
+            </dependency>
+
+            <!-- xxl-sso分布式单点登录框架 -->
+            <dependency>
+                <groupId>com.xuxueli</groupId>
+                <artifactId>xxl-sso-core</artifactId>
+                <version>${com.xuxueli.xxl-sso-core.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

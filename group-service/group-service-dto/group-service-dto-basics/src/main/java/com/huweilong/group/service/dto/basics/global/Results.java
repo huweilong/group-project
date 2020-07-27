@@ -178,4 +178,14 @@ public class Results<T> implements Serializable {
     public static <T> Results<T> RESULT(Integer state, String message, T content) {
         return new Results<>(state, message, content);
     }
+
+    /**
+     * 判断返回结果是否成功
+     * @param results  返回结果
+     * @param <T> 返回类型
+     * @return true 成功 false 失败
+     */
+    public static <T> boolean isSuccess(Results<T> results) {
+        return ResultsMsg.OK.getState().equals(results.getState()) ? true : false;
+    }
 }
