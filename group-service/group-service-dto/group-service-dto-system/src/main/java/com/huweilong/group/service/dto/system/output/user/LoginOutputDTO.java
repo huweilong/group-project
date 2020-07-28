@@ -26,6 +26,18 @@ public class LoginOutputDTO implements Serializable {
     private String username;
 
     /**
+     * 密码
+     */
+    @ApiModelProperty(value = "密码", required = true, example = "admin")
+    private String password;
+
+    /**
+     * 手机号
+     */
+    @ApiModelProperty(value = "手机号", required = true, example = "13165270713")
+    private Integer phone;
+
+    /**
      * 数据版本
      */
     @ApiModelProperty(value = "数据版本", required = true, example = "1")
