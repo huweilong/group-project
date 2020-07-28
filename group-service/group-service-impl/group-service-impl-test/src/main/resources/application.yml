@@ -101,7 +101,7 @@ spring:
 
 security:
   auth:
-    server: http://sso.huweilong.com/sso
+    server: http://sso.huweilong.com/
   oauth2:
     client:
       client-id: ${spring.application.name}
