@@ -1,12 +1,15 @@
 package com.huweilong.group.service.system.impl;
 
 import com.alibaba.fastjson.JSON;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.huweilong.group.service.dto.basics.global.Results;
 import com.huweilong.group.service.dto.system.input.user.LoginInputDTO;
 import com.huweilong.group.service.dto.system.input.user.RegisterInputDTO;
+import com.huweilong.group.service.dto.system.input.user.UserInfoInputDTO;
 import com.huweilong.group.service.dto.system.output.user.LoginOutputDTO;
 import com.huweilong.group.service.dto.system.output.user.RegisterOutputDTO;
+import com.huweilong.group.service.dto.system.output.user.UserInfoOutputDTO;
 import com.huweilong.group.service.system.SystemUserService;
 import com.huweilong.group.service.system.entity.SystemUserEntity;
 import com.huweilong.group.service.system.mapper.SystemUserMapper;
@@ -15,6 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
+import java.util.List;
 
 /**
  * 系统用户服务
@@ -50,5 +54,17 @@ public class SystemUserServiceImpl extends ServiceImpl<SystemUserMapper, SystemU
     public Results<RegisterOutputDTO> register(@Valid RegisterInputDTO input) {
         log.debug(">>>>系统注册参数信息为:>>>>{}", JSON.toJSONString(input));
         return Results.SUCCESS();
+    }
+
+    /**
+     * 根据条件查询用户列表
+     * @param input 查询条件
+     * @return 查询结果
+     */
+    @Override
+    public Results<List<UserInfoOutputDTO>> queryList(UserInfoInputDTO input) {
+        // 封装查询条件
+        QueryWrapper<SystemUserEntity> query = new QueryWrapper<>();
+        return null;
     }
 }

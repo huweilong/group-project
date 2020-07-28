@@ -21,20 +21,19 @@
 
     <!-- 项目依赖区 -->
     <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
         <!-- springcloud feign组件 -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-openfeign</artifactId>
         </dependency>
-        <!-- freemarker -->
+        <!-- oauth2 -->
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-freemarker</artifactId>
-        </dependency>
-        <!-- xxl-sso分布式单点登录框架 -->
-        <dependency>
-            <groupId>com.xuxueli</groupId>
-            <artifactId>xxl-sso-core</artifactId>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-oauth2</artifactId>
         </dependency>
         <!-- 系统服务接口 -->
         <dependency>

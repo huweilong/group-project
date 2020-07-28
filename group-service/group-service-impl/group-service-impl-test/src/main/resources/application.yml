@@ -6,7 +6,7 @@ server:
 eureka:
   client:
     service-url:
-      defaultZone: http://127.0.0.1:8100/eureka
+      defaultZone: http://eureka.huweilong.com/eureka
 
 ### Spring 配置
 spring:
@@ -98,6 +98,23 @@ spring:
         min-idle: 1
         ### 连接池最大连接数（使用负值表示没有限制）
         max-active: 8
+
+security:
+  auth:
+    server: http://sso.huweilong.com/sso
+  oauth2:
+    client:
+      client-id: ${spring.application.name}
+      client-secret: Hu371329
+      user-authorization-uri: ${security.auth.server}/oauth/authorize
+      access-token-uri: ${security.auth.server}/oauth/token
+      scope: all
+      pre-established-redirect-uri: http://test.huweilong.com/login
+      use-current-uri: false
+    resource:
+      jwt:
+        key-uri: ${security.auth.server}/oauth/token_key
+      user-info-uri: ${security.auth.server}/user
 
 mybatis-plus:
   global-config:
