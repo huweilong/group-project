@@ -44,6 +44,7 @@
         <mysql.mysql-connector-java.version>8.0.21</mysql.mysql-connector-java.version>
         <p6spy.p6spy.version>3.9.0</p6spy.p6spy.version>
         <com.xuxueli.xxl-sso-core.version>1.1.0</com.xuxueli.xxl-sso-core.version>
+        <org.springframework.security.spring-security-jwt.version>1.1.1.RELEASE</org.springframework.security.spring-security-jwt.version>
     </properties>
 
     <!-- 项目依赖区 -->
@@ -95,6 +96,12 @@
                 <version>${spring-cloud.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.security</groupId>
+                <artifactId>spring-security-jwt</artifactId>
+                <version>${org.springframework.security.spring-security-jwt.version}</version>
             </dependency>
 
             <!-- 接口文档 -->
