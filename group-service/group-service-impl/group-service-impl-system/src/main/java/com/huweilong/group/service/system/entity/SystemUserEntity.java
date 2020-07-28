@@ -28,4 +28,10 @@ public class SystemUserEntity extends BasicsEntity {
      */
     @TableField(insertStrategy = FieldStrategy.NOT_EMPTY)
     private String salt;
+
+    /**
+     * 手机号
+     */
+    @TableField(insertStrategy = FieldStrategy.NOT_EMPTY)
+    private String phone;
 }

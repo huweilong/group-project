@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.huweilong.group.service.dto.basics.global.Results;
+import com.huweilong.group.service.dto.basics.global.ResultsMsg;
 import com.huweilong.group.service.dto.system.input.user.LoginInputDTO;
 import com.huweilong.group.service.dto.system.input.user.RegisterInputDTO;
 import com.huweilong.group.service.dto.system.input.user.UserInfoInputDTO;
@@ -14,6 +15,8 @@ import com.huweilong.group.service.system.SystemUserService;
 import com.huweilong.group.service.system.entity.SystemUserEntity;
 import com.huweilong.group.service.system.mapper.SystemUserMapper;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -37,10 +40,27 @@ public class SystemUserServiceImpl extends ServiceImpl<SystemUserMapper, SystemU
     @Transactional
     public Results<LoginOutputDTO> login(LoginInputDTO input) {
         log.debug(">>>>系统登录参数信息为:>>>>{}", JSON.toJSONString(input));
+
+        // 返回信息
         LoginOutputDTO res = new LoginOutputDTO();
-        res.setId(1L);
-        res.setUsername("Admin");
-        res.setVersion(1);
+
+        // 封装查询条件
+        QueryWrapper<SystemUserEntity> query = new QueryWrapper<>();
+        query.and(wrapper -> wrapper.lambda().eq(SystemUserEntity :: getUsername, input.getLoginName())
+                .or().eq(SystemUserEntity :: getPhone, input.getLoginName())
+        );
+
+        // 查询数据库
+        SystemUserEntity userInfo = this.getOne(query, false);
+
+        // 判断用户是否存在
+        if (userInfo == null) {
+            return Results.RESULT(ResultsMsg.EMPTY);
+        }
+
+        // 封装返回信息并返回结果
+        BeanUtils.copyProperties(userInfo, res);
+
         return Results.SUCCESS(res);
     }
 

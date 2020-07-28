@@ -100,15 +100,21 @@ spring:
         max-active: 8
 
 security:
+  auth:
+    server: http://sso.huweilong.com/sso
   oauth2:
     client:
       client-id: ${spring.application.name}
-      client-secret: 123456
-      user-authorization-uri: ${auth-server}/oauth/authorize
-      access-token-uri: ${auth-server}/oauth/token
+      client-secret: Hu371329
+      user-authorization-uri: ${security.auth.server}/oauth/authorize
+      access-token-uri: ${security.auth.server}/oauth/token
+      scope: all
+      pre-established-redirect-uri: http://system.huweilong.com/login
+      use-current-uri: false
     resource:
       jwt:
-        key-uri: ${auth-server}/oauth/token_key
+        key-uri: ${security.auth.server}/oauth/token_key
+      user-info-uri: ${security.auth.server}/user
 
 mybatis-plus:
   global-config:
