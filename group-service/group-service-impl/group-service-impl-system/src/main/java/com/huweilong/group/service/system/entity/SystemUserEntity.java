@@ -20,7 +20,7 @@ public class SystemUserEntity extends BasicsEntity {
     /**
      * 密码
      */
-    @TableField(insertStrategy = FieldStrategy.NOT_EMPTY, select = false)
+    @TableField(insertStrategy = FieldStrategy.NOT_EMPTY)
     private String password;
 
     /**

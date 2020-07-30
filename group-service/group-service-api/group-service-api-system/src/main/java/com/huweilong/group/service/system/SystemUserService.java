@@ -9,6 +9,7 @@ import com.huweilong.group.service.dto.system.output.user.RegisterOutputDTO;
 import com.huweilong.group.service.dto.system.output.user.UserInfoOutputDTO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -43,9 +44,11 @@ public interface SystemUserService {
     Results<RegisterOutputDTO> register(@Valid @RequestBody RegisterInputDTO input);
 
     /**
-     * 根据条件查询用户列表
+     * 列表查询接口
      * @param input 查询条件
      * @return 查询结果
      */
+    @GetMapping("/list")
+    @ApiOperation(value = "列表查询接口", notes = "列表查询接口")
     Results<List<UserInfoOutputDTO>> queryList(UserInfoInputDTO input);
 }

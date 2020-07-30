@@ -186,6 +186,9 @@ public class Results<T> implements Serializable {
      * @return true 成功 false 失败
      */
     public static <T> boolean isSuccess(Results<T> results) {
+        if (results == null) {
+            return false;
+        }
         return ResultsMsg.OK.getState().equals(results.getState()) ? true : false;
     }
 }
