@@ -6,20 +6,22 @@
 
     <!-- 父项目配置区 -->
     <parent>
-        <artifactId>group-project</artifactId>
+        <artifactId>group-service-api</artifactId>
         <groupId>com.huweilong</groupId>
         <version>1.0.0.RELEASE</version>
     </parent>
 
-    <!-- 子项目配置区 -->
-    <modules>
-        <module>group-basics-springcloud</module>
-    </modules>
-
     <!-- 本项目配置区 -->
-    <artifactId>group-basics</artifactId>
-    <packaging>pom</packaging>
-    <name>分布式基础设施</name>
-    <description>包含：分布式注册中心，分布式配置中心，网关中心</description>
+    <artifactId>group-service-api-auth</artifactId>
+    <name>分布式服务 - 分布式服务接口 - 分布式认证服务</name>
+
+    <!-- 依赖管理区 -->
+    <dependencies>
+        <dependency>
+            <groupId>com.huweilong</groupId>
+            <artifactId>group-service-dto-auth</artifactId>
+            <version>${group-project.version}</version>
+        </dependency>
+    </dependencies>
 
 </project>

@@ -101,7 +101,7 @@ spring:
 
 security:
   auth:
-    server: http://sso.huweilong.com/
+    server: http://auth.huweilong.com/
   oauth2:
     client:
       client-id: ${spring.application.name}
@@ -112,8 +112,6 @@ security:
       pre-established-redirect-uri: http://test.huweilong.com/login
       use-current-uri: false
     resource:
-      jwt:
-        key-uri: ${security.auth.server}/oauth/token_key
       user-info-uri: ${security.auth.server}/user
 
 mybatis-plus:

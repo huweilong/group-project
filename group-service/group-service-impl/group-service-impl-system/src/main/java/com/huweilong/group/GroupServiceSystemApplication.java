@@ -13,9 +13,9 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableFeignClients
 @SpringBootApplication
 @EnableTransactionManagement
-public class GroupServiceImplSystemApplication {
+public class GroupServiceSystemApplication {
     public static void main(String[] args) {
         // Spring Boot快速启动程序
-        SpringApplication.run(GroupServiceImplSystemApplication.class, args);
+        SpringApplication.run(GroupServiceSystemApplication.class, args);
     }
 }

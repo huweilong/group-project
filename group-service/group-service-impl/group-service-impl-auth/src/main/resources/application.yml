@@ -1,0 +1,27 @@
+### 服务端口号
+server:
+  port: 8302
+  servlet:
+    context-path: /
+
+### eureka 基本信息配置
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka.huweilong.com/eureka
+
+### Spring 配置
+spring:
+  application:
+    name:  group-service-auth
+
+####swagger相关配置
+swagger:
+  base-package: com.huweilong.group.service.auth.impl
+  title: 分布式服务 - 分布式认证服务
+  description: 分布式服务 - 分布式认证服务
+  version: 1.0.0
+  terms-of-service-url: http://www.huweilong.com/
+  contact:
+    name: Alex
+    email: Alex_2713@126.com

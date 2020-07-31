@@ -15,6 +15,7 @@
     <modules>
         <module>group-service-impl-test</module>
         <module>group-service-impl-system</module>
+        <module>group-service-impl-auth</module>
     </modules>
 
     <!-- 本项目配置区 -->

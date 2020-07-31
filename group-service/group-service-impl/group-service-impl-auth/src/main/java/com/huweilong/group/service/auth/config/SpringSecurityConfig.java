@@ -1,24 +1,21 @@
-package com.huweilong.group.basics.sso.config;
+package com.huweilong.group.service.auth.config;
 
-import com.huweilong.group.basics.sso.handler.AuthFailureHandler;
-import com.huweilong.group.basics.sso.handler.AuthSuccessHandler;
+import com.huweilong.group.service.auth.handler.AuthFailureHandler;
+import com.huweilong.group.service.auth.handler.AuthSuccessHandler;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
 public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
-    @Qualifier("SSOUserDetailsService")
-    private UserDetailsService userDetailsService;
+    private SecurityUserDetails securityUserDetails;
 
     @Autowired
     private AuthSuccessHandler authSuccessHandler;
@@ -34,7 +31,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean
     public DaoAuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider authenticationProvider = new DaoAuthenticationProvider();
-        authenticationProvider.setUserDetailsService(userDetailsService);
+        authenticationProvider.setUserDetailsService(securityUserDetails);
         authenticationProvider.setPasswordEncoder(passwordEncoder());
         authenticationProvider.setHideUserNotFoundExceptions(false);
         return authenticationProvider;
@@ -71,7 +68,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
                 // 配置权限
                 .authorizeRequests()
-                .antMatchers("/oauth/**", "/login/**", "/logout/**")
+                .antMatchers("/oauth/**", "/login/**", "/logout/**", "/v2/**")
                 // 用户可以任意访问
                 .permitAll()
                 // 需要对外暴漏的资源路径

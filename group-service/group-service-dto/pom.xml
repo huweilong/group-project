@@ -16,6 +16,7 @@
         <module>group-service-dto-test</module>
         <module>group-service-dto-basics</module>
         <module>group-service-dto-system</module>
+        <module>group-service-dto-auth</module>
     </modules>
 
     <!-- 本项目配置区 -->

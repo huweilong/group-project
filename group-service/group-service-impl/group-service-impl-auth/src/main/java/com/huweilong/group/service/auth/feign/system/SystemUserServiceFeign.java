@@ -1,10 +1,7 @@
-package com.huweilong.group.basics.sso.feign.system;
+package com.huweilong.group.service.auth.feign.system;
 
 import com.huweilong.group.service.system.SystemUserService;
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.security.core.userdetails.UserDetailsService;
-
-import javax.validation.Valid;
 
 /**
  * 系统用户服务

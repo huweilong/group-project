@@ -1,4 +1,4 @@
-package com.huweilong.group.basics.sso.handler;
+package com.huweilong.group.service.auth.handler;
 
 import com.alibaba.fastjson.JSONObject;
 import com.huweilong.group.service.dto.basics.global.Results;

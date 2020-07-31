@@ -1,6 +1,6 @@
-package com.huweilong.group.basics.sso.service;
+package com.huweilong.group.service.auth.config;
 
-import com.huweilong.group.basics.sso.feign.system.SystemUserServiceFeign;
+import com.huweilong.group.service.auth.feign.system.SystemUserServiceFeign;
 import com.huweilong.group.service.dto.basics.global.Results;
 import com.huweilong.group.service.dto.basics.global.ResultsMsg;
 import com.huweilong.group.service.dto.system.input.user.LoginInputDTO;
@@ -15,7 +15,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 @Component
-public class SSOUserDetailsService implements UserDetailsService {
+public class SecurityUserDetails implements UserDetailsService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 

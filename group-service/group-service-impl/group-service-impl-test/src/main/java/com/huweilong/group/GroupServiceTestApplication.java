@@ -1,6 +1,5 @@
 package com.huweilong.group;
 
-import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
@@ -12,9 +11,9 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 @EnableEurekaClient
 @EnableFeignClients
 @SpringBootApplication
-public class GroupServiceImplTestApplication {
+public class GroupServiceTestApplication {
     public static void main(String[] args) {
         // Spring Boot快速启动程序
-        SpringApplication.run(GroupServiceImplTestApplication.class, args);
+        SpringApplication.run(GroupServiceTestApplication.class, args);
     }
 }

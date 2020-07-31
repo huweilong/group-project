@@ -38,3 +38,10 @@ spring:
           filters:
             - SwaggerHeaderFilter
             - StripPrefix=1
+        - id: 分布式服务 - 分布式认证服务
+          uri: lb://group-service-auth
+          predicates:
+            - Path=/group-service-auth/**
+          filters:
+            - SwaggerHeaderFilter
+            - StripPrefix=1

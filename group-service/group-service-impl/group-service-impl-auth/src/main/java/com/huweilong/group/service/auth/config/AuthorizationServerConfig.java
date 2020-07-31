@@ -1,4 +1,4 @@
-package com.huweilong.group.basics.sso.config;
+package com.huweilong.group.service.auth.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -28,7 +28,6 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
                 .authorizedGrantTypes("authorization_code", "refresh_token")
                 .scopes("all")
                 .autoApprove(true)
-                // 加上验证回调地址
                 .redirectUris("http://test.huweilong.com/login")
                 .and()
                 .withClient("group-service-system")
@@ -36,7 +35,14 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
                 .authorizedGrantTypes("authorization_code", "refresh_token")
                 .scopes("all")
                 .autoApprove(true)
-                .redirectUris("http://system.huweilong.com/login");
+                .redirectUris("http://system.huweilong.com/login")
+                .and()
+                .withClient("group-service-auth")
+                .secret(new BCryptPasswordEncoder().encode("Hu371329"))
+                .authorizedGrantTypes("authorization_code", "refresh_token")
+                .scopes("all")
+                .autoApprove(true)
+                .redirectUris("http://auth.huweilong.com/login");
     }
 
     @Override
