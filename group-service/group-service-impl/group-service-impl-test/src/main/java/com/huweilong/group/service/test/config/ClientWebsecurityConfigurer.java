@@ -24,15 +24,12 @@ public class ClientWebsecurityConfigurer extends WebSecurityConfigurerAdapter {
     public void configure(HttpSecurity http) throws Exception {
         http
                 // 配置权限
+//                .antMatcher("/**")
                 .authorizeRequests()
                 .antMatchers("/v2/**")
                 // 用户可以任意访问
                 .permitAll()
                 // 除上面外的所有请求全部需要鉴权认证
-                .anyRequest().authenticated()
-
-                .and()
-
-                .logout().logoutUrl("/logout");
+                .anyRequest().authenticated();
     }
 }

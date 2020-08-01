@@ -13,7 +13,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
-public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
+public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private SecurityUserDetails securityUserDetails;
 
@@ -50,48 +50,45 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 // 用户未登录时，访问任何资源都跳转到该路径。即登登陆页面
 //                .loginPage("/login.html")
                 // 登陆表单form中的action地址，也是处理认证请求的路径
-//                .loginProcessingUrl("/login")
+                .loginProcessingUrl("/user/login")
                 // 默认是 username
-//                .usernameParameter("username")
+                .usernameParameter("loginName")
                 // 默认是 password
-//                .passwordParameter("password")
+                .passwordParameter("password")
                 // 登录成功跳转接口
 //                .defaultSuccessUrl("/index")
                 // 登陆失败跳转页面
 //                .failureUrl("/login.html")
                 // 登录成功 handler
-                .successHandler(authSuccessHandler)
+//                .successHandler(authSuccessHandler)
                 // 登录失败 handler
-                .failureHandler(authFailureHandler)
+//                .failureHandler(authFailureHandler)
 
                 .and()
 
                 // 配置权限
                 .authorizeRequests()
-                .antMatchers("/oauth/**", "/login/**", "/logout/**", "/v2/**")
+                .antMatchers("/oauth/**", "/user/login/**", "/user/register/**", "/user/logout/**", "/v2/**")
                 // 用户可以任意访问
                 .permitAll()
                 // 需要对外暴漏的资源路径
-                .antMatchers("orger")
+//                .antMatchers("orger")
                 // user admin角色都可以访问
-                .hasAnyAuthority("ROLE_USER", "ROLE_ADMIN")
+//                .hasAnyAuthority("ROLE_USER", "ROLE_ADMIN")
                 // 需要对外暴漏的资源路径
-                .antMatchers("/systen/user", "/systen/role", "/systen/menu")
+//                .antMatchers("/systen/user", "/systen/role", "/systen/menu")
                 // admin角色可以访问
-                .hasAnyAuthority("ROLE_ADMIN")
+//                .hasAnyAuthority("ROLE_ADMIN")
                 // 除上面外的所有请求全部需要鉴权认证
                 .anyRequest().authenticated()
 
                 .and()
 
-                .csrf().disable();
+                .logout().logoutUrl("/user/logout")
 
-//                .and()
-//                .authorizeRequests()
-//                .antMatchers("/oauth/**").authenticated()
-//                .and()
-//                .formLogin().permitAll();
-//        http.logout().logoutUrl("/logout");
+                .and()
+
+                .csrf().disable();
     }
 
     @Override

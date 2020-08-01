@@ -112,6 +112,8 @@ security:
       pre-established-redirect-uri: http://test.huweilong.com/login
       use-current-uri: false
     resource:
+      jwt:
+        key-uri: ${security.auth.server}/oauth/token_key
       user-info-uri: ${security.auth.server}/user
 
 mybatis-plus:

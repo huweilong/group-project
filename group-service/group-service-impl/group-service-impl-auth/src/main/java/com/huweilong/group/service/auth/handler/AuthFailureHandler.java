@@ -12,6 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+/**
+ * 认证失败 handler
+ */
 @Component
 public class AuthFailureHandler implements AuthenticationFailureHandler {
     @Override

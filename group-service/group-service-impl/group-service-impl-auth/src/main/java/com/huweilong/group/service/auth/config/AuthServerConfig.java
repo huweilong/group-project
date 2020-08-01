@@ -15,12 +15,14 @@ import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
 
 import java.util.concurrent.TimeUnit;
 
+/**
+ * 认证相关配置
+ */
 @Configuration
 @EnableAuthorizationServer
-public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
+public class AuthServerConfig extends AuthorizationServerConfigurerAdapter {
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-
         // 定义了两个客户端应用的通行证
         clients.inMemory()
                 .withClient("group-service-test")
@@ -35,14 +37,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
                 .authorizedGrantTypes("authorization_code", "refresh_token")
                 .scopes("all")
                 .autoApprove(true)
-                .redirectUris("http://system.huweilong.com/login")
-                .and()
-                .withClient("group-service-auth")
-                .secret(new BCryptPasswordEncoder().encode("Hu371329"))
-                .authorizedGrantTypes("authorization_code", "refresh_token")
-                .scopes("all")
-                .autoApprove(true)
-                .redirectUris("http://auth.huweilong.com/login");
+                .redirectUris("http://system.huweilong.com/login");
     }
 
     @Override

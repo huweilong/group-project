@@ -1,10 +1,10 @@
 package com.huweilong.group.service.auth.config;
 
-import com.huweilong.group.service.auth.feign.system.SystemUserServiceFeign;
+import com.huweilong.group.service.auth.AuthUserService;
+import com.huweilong.group.service.dto.auth.input.LoginInputDTO;
+import com.huweilong.group.service.dto.auth.output.LoginOutputDTO;
 import com.huweilong.group.service.dto.basics.global.Results;
 import com.huweilong.group.service.dto.basics.global.ResultsMsg;
-import com.huweilong.group.service.dto.system.input.user.LoginInputDTO;
-import com.huweilong.group.service.dto.system.output.user.LoginOutputDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.User;
@@ -20,13 +20,13 @@ public class SecurityUserDetails implements UserDetailsService {
     private PasswordEncoder passwordEncoder;
 
     @Autowired
-    private SystemUserServiceFeign systemUserServiceFeign;
+    private AuthUserService authUserService;
 
     @Override
     public UserDetails loadUserByUsername(String loginName) throws UsernameNotFoundException {
         LoginInputDTO input = new LoginInputDTO();
         input.setLoginName(loginName);
-        Results<LoginOutputDTO> results = systemUserServiceFeign.login(input);
+        Results<LoginOutputDTO> results = authUserService.login(input);
 
         if (Results.isSuccess(results) && results.getContent() != null) {
             return new User(results.getContent().getUsername(), results.getContent().getPassword(), AuthorityUtils.commaSeparatedStringToAuthorityList("ROLE_NORMAL,ROLE_MEDIUM"));
