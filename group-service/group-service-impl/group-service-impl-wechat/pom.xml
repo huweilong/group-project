@@ -12,15 +12,15 @@
     </parent>
 
     <!-- 本项目配置区 -->
-    <artifactId>group-service-impl-auth</artifactId>
-    <name>分布式服务 - 分布式服务实现 - 分布式认证服务</name>
+    <artifactId>group-service-impl-wechat</artifactId>
+    <name>分布式服务 - 分布式服务实现 - 分布式微信服务</name>
 
     <!-- 依赖管理区 -->
     <dependencies>
         <!-- 认证服务接口 -->
         <dependency>
             <groupId>com.huweilong</groupId>
-            <artifactId>group-service-api-auth</artifactId>
+            <artifactId>group-service-api-wechat</artifactId>
             <version>${group-project.version}</version>
         </dependency>
 
@@ -28,12 +28,6 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-redis</artifactId>
-        </dependency>
-
-        <!-- oauth2 -->
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-oauth2</artifactId>
         </dependency>
 
         <!-- 数据库插件 -->

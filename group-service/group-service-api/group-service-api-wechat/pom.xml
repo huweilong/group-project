@@ -6,29 +6,20 @@
 
     <!-- 父项目配置区 -->
     <parent>
-        <artifactId>group-service</artifactId>
+        <artifactId>group-service-api</artifactId>
         <groupId>com.huweilong</groupId>
         <version>1.0.0.RELEASE</version>
     </parent>
 
-    <!-- 子项目配置区 -->
-    <modules>
-        <module>group-service-api-test</module>
-        <module>group-service-api-system</module>
-        <module>group-service-api-auth</module>
-        <module>group-service-api-wechat</module>
-    </modules>
-
     <!-- 本项目配置区 -->
-    <artifactId>group-service-api</artifactId>
-    <packaging>pom</packaging>
-    <name>分布式服务 - 分布式服务接口</name>
+    <artifactId>group-service-api-wechat</artifactId>
+    <name>分布式服务 - 分布式服务接口 - 分布式微信服务</name>
 
     <!-- 依赖管理区 -->
     <dependencies>
         <dependency>
             <groupId>com.huweilong</groupId>
-            <artifactId>group-service-dto-basics</artifactId>
+            <artifactId>group-service-dto-wechat</artifactId>
             <version>${group-project.version}</version>
         </dependency>
     </dependencies>
