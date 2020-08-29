@@ -13,7 +13,7 @@ eureka:
 ### Spring 配置
 spring:
   application:
-    name:  group-service-auth
+    name:  group-service-wechat
   datasource:
     ### 数据库连接驱动
     driver-class-name: com.p6spy.engine.spy.P6SpyDriver
@@ -101,6 +101,23 @@ spring:
         ### 连接池最大连接数（使用负值表示没有限制）
         max-active: 8
 
+security:
+  auth:
+    server: http://auth.huweilong.com/
+  oauth2:
+    client:
+      client-id: ${spring.application.name}
+      client-secret: Hu371329
+      user-authorization-uri: ${security.auth.server}/oauth/authorize
+      access-token-uri: ${security.auth.server}/oauth/token
+      scope: all
+      pre-established-redirect-uri: http://test.huweilong.com/login
+      use-current-uri: false
+    resource:
+      jwt:
+        key-uri: ${security.auth.server}/oauth/token_key
+      user-info-uri: ${security.auth.server}/user
+
 mybatis-plus:
   global-config:
     db-config:
@@ -117,11 +134,12 @@ mybatis-plus:
 
 ####swagger相关配置
 swagger:
-  base-package: com.huweilong.group.service.auth.impl
-  title: 分布式服务 - 分布式认证服务
-  description: 分布式服务 - 分布式认证服务
+  base-package: com.huweilong.group.service.wechat.impl
+  title: 分布式服务 - 分布式微信服务
+  description: 分布式服务 - 分布式微信服务
   version: 1.0.0
   terms-of-service-url: http://www.huweilong.com/
   contact:
     name: Alex
     email: Alex_2713@126.com
+    url: http://www.huweilong.com/

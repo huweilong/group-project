@@ -1,4 +1,4 @@
-package com.huweilong.group.service.test.config;
+package com.huweilong.group.service.wechat.config;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

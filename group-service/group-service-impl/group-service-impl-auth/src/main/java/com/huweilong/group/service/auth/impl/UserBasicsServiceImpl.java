@@ -2,10 +2,9 @@ package com.huweilong.group.service.auth.impl;
 
 import com.alibaba.fastjson.JSON;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.huweilong.group.service.auth.AuthUserService;
+import com.huweilong.group.service.auth.UserBasicsService;
+import com.huweilong.group.service.auth.base.AuthUserService;
 import com.huweilong.group.service.auth.entity.AuthUserEntity;
-import com.huweilong.group.service.auth.mapper.AuthUserMapper;
 import com.huweilong.group.service.dto.auth.input.LoginInputDTO;
 import com.huweilong.group.service.dto.auth.input.RegisterInputDTO;
 import com.huweilong.group.service.dto.auth.output.LoginOutputDTO;
@@ -23,14 +22,40 @@ import javax.validation.Valid;
 import java.util.UUID;
 
 /**
- * 认证用户服务
+ * 用户基础服务
  * @author Alex
  */
 @Slf4j
 @RestController
-public class AuthUserServiceImpl extends ServiceImpl<AuthUserMapper, AuthUserEntity> implements AuthUserService {
-    @Autowired
+public class UserBasicsServiceImpl implements UserBasicsService {
+    /**
+     * 密码服务
+     */
     private PasswordEncoder passwordEncoder;
+
+    /**
+     * 认证用户服务
+     */
+    @Autowired
+    private AuthUserService authUserService;
+
+    /**
+     * 构造器
+     * @param authUserService
+     */
+    @Autowired
+    public UserBasicsServiceImpl(AuthUserService authUserService) {
+        this.authUserService = authUserService;
+    }
+
+    /**
+     * 注入器
+     * @param passwordEncoder
+     */
+    @Autowired
+    public void setPasswordEncoder(PasswordEncoder passwordEncoder) {
+        this.passwordEncoder = passwordEncoder;
+    }
 
     /**
      * 登录接口
@@ -52,7 +77,7 @@ public class AuthUserServiceImpl extends ServiceImpl<AuthUserMapper, AuthUserEnt
         );
 
         // 查询数据库
-        AuthUserEntity userInfo = this.getOne(query, false);
+        AuthUserEntity userInfo = authUserService.getOne(query, false);
 
         // 判断用户是否存在
         if (userInfo == null) {
@@ -83,7 +108,7 @@ public class AuthUserServiceImpl extends ServiceImpl<AuthUserMapper, AuthUserEnt
         saveObj.setSalt(UUID.randomUUID().toString());
         // 密码加密
         saveObj.setPassword(passwordEncoder.encode(input.getPassword()));
-        this.save(saveObj);
+        authUserService.save(saveObj);
 
         return Results.SUCCESS(res);
     }

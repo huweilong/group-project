@@ -7,13 +7,28 @@ import org.springframework.http.server.reactive.ServerHttpRequest;
 import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
 
+/**
+ * swagger 过滤器
+ * @author Alex
+ */
 @Component
 public class SwaggerHeaderFilter extends AbstractGatewayFilterFactory {
 
+    /**
+     * HEADER_NAME
+     */
     private static final String HEADER_NAME = "X-Forwarded-Prefix";
 
+    /**
+     * URI
+     */
     private static final String URI = "/v2/api-docs";
 
+    /**
+     * 配置网关过滤器
+     * @param config 配置项
+     * @return GatewayFilter
+     */
     @Override
     public GatewayFilter apply(Object config) {
         return (exchange, chain) -> {

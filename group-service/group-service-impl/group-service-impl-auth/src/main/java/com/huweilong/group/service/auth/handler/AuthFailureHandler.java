@@ -14,9 +14,18 @@ import java.io.PrintWriter;
 
 /**
  * 认证失败 handler
+ * @author Alex
  */
 @Component
 public class AuthFailureHandler implements AuthenticationFailureHandler {
+    /**
+     * 认证失败业务处理
+     * @param httpServletRequest httpServletRequest
+     * @param httpServletResponse httpServletResponse
+     * @param e 认证失败信息
+     * @throws IOException 异常
+     * @throws ServletException 异常
+     */
     @Override
     public void onAuthenticationFailure(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, AuthenticationException e) throws IOException, ServletException {
         httpServletResponse.setContentType("application/json");

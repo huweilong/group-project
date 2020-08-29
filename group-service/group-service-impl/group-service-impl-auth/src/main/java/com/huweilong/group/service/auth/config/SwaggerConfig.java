@@ -10,12 +10,14 @@ import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.service.ApiInfo;
+import springfox.documentation.service.Contact;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 /**
  * swagger 配置
+ * @author Alex
  */
 @Configuration
 @EnableSwagger2
@@ -43,6 +45,13 @@ public class SwaggerConfig {
     @Value("${swagger.contact.email}")
     private String contactEmail;
 
+    @Value("${swagger.contact.url}")
+    private String contactUrl;
+
+    /**
+     * groupRestApi
+     * @return Docket
+     */
     @Bean
     @Order
     public Docket groupRestApi() {
@@ -54,12 +63,16 @@ public class SwaggerConfig {
                 .build();
     }
 
+    /**
+     * groupApiInfo
+     * @return ApiInfo
+     */
     private ApiInfo groupApiInfo(){
         return new ApiInfoBuilder()
                 .title(title)
                 .description(description)
                 .termsOfServiceUrl(termsOfServiceUrl)
-                .contact(contactEmail)
+                .contact(new Contact(contactName, contactUrl, contactEmail))
                 .version(version)
                 .build();
     }

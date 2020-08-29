@@ -1,6 +1,7 @@
 package com.huweilong.group.service.auth.config;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.interceptor.KeyGenerator;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -11,13 +12,13 @@ import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactor
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.*;
 
-import javax.annotation.Resource;
 import java.time.Duration;
 import java.util.HashMap;
 import java.util.Map;
 
 /**
  * Redis 配置
+ * @author Alex
  */
 @Slf4j
 @Configuration
@@ -25,8 +26,16 @@ public class RedisConfig {
     /**
      * lettuce客户端连接工厂
      */
-    @Resource
-    private LettuceConnectionFactory lettuceConnectionFactory;
+    private final LettuceConnectionFactory lettuceConnectionFactory;
+
+    /**
+     * 构造器
+     * @param lettuceConnectionFactory
+     */
+    @Autowired
+    public RedisConfig(LettuceConnectionFactory lettuceConnectionFactory) {
+        this.lettuceConnectionFactory = lettuceConnectionFactory;
+    }
 
     /**
      * json序列化器
@@ -38,6 +47,11 @@ public class RedisConfig {
      */
     private Duration timeToLive = Duration.ofDays(1);
 
+    /**
+     * 缓存管理
+     * @param connectionFactory 连接工厂
+     * @return RedisCacheManager
+     */
     @Bean
     public RedisCacheManager cacheManager(RedisConnectionFactory connectionFactory) {
         // redis缓存配置

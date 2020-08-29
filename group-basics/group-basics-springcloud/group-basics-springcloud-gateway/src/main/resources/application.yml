@@ -45,3 +45,10 @@ spring:
           filters:
             - SwaggerHeaderFilter
             - StripPrefix=1
+        - id: 分布式服务 - 分布式微信服务
+          uri: lb://group-service-wechat
+          predicates:
+            - Path=/group-service-wechat/**
+          filters:
+            - SwaggerHeaderFilter
+            - StripPrefix=1

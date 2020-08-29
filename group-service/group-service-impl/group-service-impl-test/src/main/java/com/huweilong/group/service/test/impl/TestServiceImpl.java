@@ -22,8 +22,19 @@ import java.util.UUID;
 @RestController
 public class TestServiceImpl extends ServiceImpl<UserMapper, UserEntity> implements TestService {
 
+    /**
+     * 用户接口
+     */
+    private final UserMapper userMapper;
+
+    /**
+     * 构造器
+     * @param userMapper
+     */
     @Autowired
-    private UserMapper userMapper;
+    public TestServiceImpl(UserMapper userMapper) {
+        this.userMapper = userMapper;
+    }
 
     /**
      * path风格接口

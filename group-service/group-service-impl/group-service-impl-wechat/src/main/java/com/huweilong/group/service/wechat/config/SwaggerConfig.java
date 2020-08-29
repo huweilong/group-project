@@ -1,4 +1,4 @@
-package com.huweilong.group.service.test.config;
+package com.huweilong.group.service.wechat.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;

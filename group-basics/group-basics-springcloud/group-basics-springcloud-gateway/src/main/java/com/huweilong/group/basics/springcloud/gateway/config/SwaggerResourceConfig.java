@@ -13,14 +13,29 @@ import springfox.documentation.swagger.web.SwaggerResourcesProvider;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * swagger 资源配置
+ * @author Alex
+ */
 @Slf4j
 @Component
 @Primary
 @AllArgsConstructor
 public class SwaggerResourceConfig implements SwaggerResourcesProvider {
+    /**
+     * 路由信息
+     */
     private final RouteLocator routeLocator;
+
+    /**
+     * 网关信息
+     */
     private final GatewayProperties gatewayProperties;
 
+    /**
+     * 获取swagger资源列表
+     * @return swagger资源列表
+     */
     @Override
     public List<SwaggerResource> get() {
         List<SwaggerResource> resources = new ArrayList<>();
@@ -37,6 +52,12 @@ public class SwaggerResourceConfig implements SwaggerResourcesProvider {
         return resources;
     }
 
+    /**
+     * 获取swagger资源
+     * @param name 名称
+     * @param location 地址
+     * @return swagger资源
+     */
     private SwaggerResource swaggerResource(String name, String location) {
         log.info("name:{},location:{}",name,location);
         SwaggerResource swaggerResource = new SwaggerResource();

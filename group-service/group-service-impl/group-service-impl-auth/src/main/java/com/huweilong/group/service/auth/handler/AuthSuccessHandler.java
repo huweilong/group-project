@@ -14,9 +14,18 @@ import java.io.PrintWriter;
 
 /**
  * 认证成功 handler
+ * @author Alex
  */
 @Component
 public class AuthSuccessHandler implements AuthenticationSuccessHandler {
+    /**
+     * 认证成功业务处理
+     * @param httpServletRequest httpServletRequest
+     * @param httpServletResponse httpServletResponse
+     * @param authentication 认证信息
+     * @throws IOException 异常
+     * @throws ServletException 异常
+     */
     @Override
     public void onAuthenticationSuccess(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Authentication authentication) throws IOException, ServletException {
         httpServletResponse.setContentType("application/json");

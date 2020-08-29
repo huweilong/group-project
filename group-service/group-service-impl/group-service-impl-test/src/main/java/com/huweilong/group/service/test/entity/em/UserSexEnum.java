@@ -4,6 +4,10 @@ import com.baomidou.mybatisplus.annotation.EnumValue;
 import com.baomidou.mybatisplus.core.enums.IEnum;
 import lombok.Getter;
 
+/**
+ * 性别枚举
+ * @author Alex
+ */
 @Getter
 public enum UserSexEnum implements IEnum<Byte> {
     KNOW((byte) 0, "未知"),

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- 父项目配置区 -->
+    <parent>
+        <artifactId>group-service-dto</artifactId>
+        <groupId>com.huweilong</groupId>
+        <version>1.0.0.RELEASE</version>
+    </parent>
+
+    <!-- 本项目配置区 -->
+    <artifactId>group-service-dto-tenant</artifactId>
+    <name>分布式服务 - 分布式服务对象 - 分布式租户服务</name>
+
+</project>

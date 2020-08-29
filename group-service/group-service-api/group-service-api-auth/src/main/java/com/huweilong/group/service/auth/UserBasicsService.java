@@ -14,12 +14,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.validation.Valid;
 
 /**
- * 认证用户服务
+ * 用户基础服务
  * @author Alex
  */
-@RequestMapping("/user")
-@Api(tags = "认证用户服务")
-public interface AuthUserService {
+@RequestMapping("/user/basics")
+@Api(tags = "用户基础服务")
+public interface UserBasicsService {
 
     /**
      * 登录接口

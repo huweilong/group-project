@@ -11,13 +11,15 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 /**
  * 全局异常处理
+ * @author Alex
  */
 @Slf4j
 @RestControllerAdvice(annotations = {RestController.class})
 public class GlobalExceptionHandler {
     /**
-     * 默认统一异常处理方法
-     * @ExceptionHandler 注解用来配置需要拦截的异常类型, 也可以是自定义异常
+     * Exception
+     * @param e 异常信息
+     * @return 返回结果
      */
     @ExceptionHandler(Exception.class)
     public Results runtimeExceptionHandler(Exception e) {
@@ -28,16 +30,26 @@ public class GlobalExceptionHandler {
         return Results.ERROR(e.getMessage());
     }
 
+    /**
+     * MethodArgumentNotValidException
+     * @param e 异常信息
+     * @return 返回结果
+     */
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public Results handleBindException(MethodArgumentNotValidException ex) {
-        FieldError fieldError = ex.getBindingResult().getFieldError();
+    public Results handleBindException(MethodArgumentNotValidException e) {
+        FieldError fieldError = e.getBindingResult().getFieldError();
         log.error("参数校验异常:{}({})", fieldError.getDefaultMessage(), fieldError.getField());
         return Results.ERROR(fieldError.getDefaultMessage());
     }
 
+    /**
+     * BindException
+     * @param e 异常信息
+     * @return 返回结果
+     */
     @ExceptionHandler(BindException.class)
-    public Results handleBindException(BindException ex) {
-        FieldError fieldError = ex.getBindingResult().getFieldError();
+    public Results handleBindException(BindException e) {
+        FieldError fieldError = e.getBindingResult().getFieldError();
         log.error("参数校验异常:{}({})", fieldError.getDefaultMessage(), fieldError.getField());
         return Results.ERROR(fieldError.getDefaultMessage());
     }

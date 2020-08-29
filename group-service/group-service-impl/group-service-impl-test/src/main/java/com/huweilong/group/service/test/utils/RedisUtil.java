@@ -3,7 +3,6 @@ package com.huweilong.group.service.test.utils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
 
@@ -14,16 +13,25 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * redis 工具类
+ * @author Alex
  */
 @Slf4j
 @Component
 public class RedisUtil {
 
 	/**
-	 *
+	 * redis 模板
+	 */
+	private RedisTemplate redisTemplate;
+
+	/**
+	 * 构造器
+	 * @param redisTemplate redis 模板
 	 */
 	@Autowired
-	private RedisTemplate redisTemplate;
+	public RedisUtil(RedisTemplate redisTemplate) {
+		this.redisTemplate = redisTemplate;
+	}
 
 	/**
 	 * 设置缓存失效时间

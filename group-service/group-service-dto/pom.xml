@@ -18,6 +18,7 @@
         <module>group-service-dto-system</module>
         <module>group-service-dto-auth</module>
         <module>group-service-dto-wechat</module>
+        <module>group-service-dto-tenant</module>
     </modules>
 
     <!-- 本项目配置区 -->

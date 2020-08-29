@@ -14,17 +14,28 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * MybatisPlus配置类
+ * @author Alex
+ */
 @Configuration
 @EnableTransactionManagement
 @MapperScan(basePackages = {MybatisPlusConfig.BASE_MAPPER_PACKAGES, MybatisPlusConfig.BASE_DAO_PACKAGES})
 public class MybatisPlusConfig {
-
+    /**
+     * BASE_MAPPER_PACKAGES
+     *  Mybatis Plus 接口扫描
+     */
     public static final String BASE_MAPPER_PACKAGES = "com.huweilong.group.service.test.mapper";
+    /**
+     * BASE_DAO_PACKAGES
+     *  自定义接口扫描
+     */
     public static final String BASE_DAO_PACKAGES = "com.huweilong.group.service.test.dao";
 
     /**
      * paginationInterceptor：
-     * @return
+     * @return PaginationInterceptor
      */
     @Bean
     public PaginationInterceptor paginationInterceptor() {
@@ -40,13 +51,17 @@ public class MybatisPlusConfig {
 
     /**
      * optimisticLockerInterceptor：乐观锁配置
-     * @return
+     * @return OptimisticLockerInterceptor
      */
     @Bean
     public OptimisticLockerInterceptor optimisticLockerInterceptor() {
         return new OptimisticLockerInterceptor();
     }
 
+    /**
+     * customizer
+     * @return Jackson2ObjectMapperBuilderCustomizer
+     */
     @Bean
     public Jackson2ObjectMapperBuilderCustomizer customizer(){
         return builder -> builder.featuresToEnable(SerializationFeature.WRITE_ENUMS_USING_TO_STRING);

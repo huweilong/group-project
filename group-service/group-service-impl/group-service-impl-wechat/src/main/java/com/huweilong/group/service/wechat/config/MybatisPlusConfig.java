@@ -1,4 +1,4 @@
-package com.huweilong.group.service.auth.config;
+package com.huweilong.group.service.wechat.config;
 
 import com.baomidou.mybatisplus.core.parser.ISqlParser;
 import com.baomidou.mybatisplus.extension.parsers.BlockAttackSqlParser;
@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * MyBatis 配置
+ * MybatisPlus配置类
  * @author Alex
  */
 @Configuration
@@ -26,13 +26,12 @@ public class MybatisPlusConfig {
      * BASE_MAPPER_PACKAGES
      *  Mybatis Plus 接口扫描
      */
-    public static final String BASE_MAPPER_PACKAGES = "com.huweilong.group.service.auth.mapper";
-
+    public static final String BASE_MAPPER_PACKAGES = "com.huweilong.group.service.wechat.mapper";
     /**
      * BASE_DAO_PACKAGES
      *  自定义接口扫描
      */
-    public static final String BASE_DAO_PACKAGES = "com.huweilong.group.service.auth.dao";
+    public static final String BASE_DAO_PACKAGES = "com.huweilong.group.service.wechat.dao";
 
     /**
      * paginationInterceptor：

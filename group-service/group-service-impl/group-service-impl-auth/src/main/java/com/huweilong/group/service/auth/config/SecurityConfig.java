@@ -2,6 +2,7 @@ package com.huweilong.group.service.auth.config;
 
 import com.huweilong.group.service.auth.handler.AuthFailureHandler;
 import com.huweilong.group.service.auth.handler.AuthSuccessHandler;
+import com.huweilong.group.service.auth.impl.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -12,26 +13,67 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+/**
+ * 认证配置类
+ * @author Alex
+ */
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
-    @Autowired
-    private SecurityUserDetails securityUserDetails;
+    /**
+     * 认证服务实现
+     */
+    private UserDetailsServiceImpl userDetailsServiceImpl;
 
-    @Autowired
+    /**
+     * 认证成功的处理方法
+     */
     private AuthSuccessHandler authSuccessHandler;
 
-    @Autowired
+    /**
+     * 认证失败的处理方法
+     */
     private AuthFailureHandler authFailureHandler;
 
+    /**
+     * 构造器
+     * @param authSuccessHandler 认证成功的处理方法
+     * @param authFailureHandler 认证失败的处理方法
+     */
+    @Autowired
+    public SecurityConfig(
+            AuthSuccessHandler authSuccessHandler,
+            AuthFailureHandler authFailureHandler) {
+
+        this.authSuccessHandler = authSuccessHandler;
+        this.authFailureHandler = authFailureHandler;
+    }
+
+    /**
+     * 注入器
+     * @param userDetailsServiceImpl 认证服务实现
+     */
+    @Autowired
+    public void setUserDetailsServiceImpl(UserDetailsServiceImpl userDetailsServiceImpl) {
+        this.userDetailsServiceImpl = userDetailsServiceImpl;
+    }
+
+    /**
+     * 密码服务
+     * @return PasswordEncoder
+     */
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
+    /**
+     * authenticationProvider
+     * @return DaoAuthenticationProvider
+     */
     @Bean
     public DaoAuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider authenticationProvider = new DaoAuthenticationProvider();
-        authenticationProvider.setUserDetailsService(securityUserDetails);
+        authenticationProvider.setUserDetailsService(userDetailsServiceImpl);
         authenticationProvider.setPasswordEncoder(passwordEncoder());
         authenticationProvider.setHideUserNotFoundExceptions(false);
         return authenticationProvider;
@@ -91,6 +133,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf().disable();
     }
 
+    /**
+     * 认证管理点配置
+     * @param auth AuthenticationManagerBuilder
+     */
     @Override
     protected void configure(AuthenticationManagerBuilder auth) {
         auth.authenticationProvider(authenticationProvider());
