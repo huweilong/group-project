@@ -17,6 +17,7 @@
         <module>group-service-api-system</module>
         <module>group-service-api-auth</module>
         <module>group-service-api-wechat</module>
+        <module>group-service-api-tenant</module>
     </modules>
 
     <!-- 本项目配置区 -->

@@ -17,6 +17,7 @@
         <module>group-service-impl-system</module>
         <module>group-service-impl-auth</module>
         <module>group-service-impl-wechat</module>
+        <module>group-service-impl-tenant</module>
     </modules>
 
     <!-- 本项目配置区 -->
